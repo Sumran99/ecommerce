@@ -34,9 +34,15 @@ const ExpandMore = styled((props) => {
 function Product(props) {
   const [expanded, setExpanded] = React.useState(false);
 
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleAddCartClick = () => {
+
+  }
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader title={props.name} subheader={props.category} />

@@ -13,7 +13,7 @@ function App() {
         setProducts(res.data.product);
       })
       .catch((error) => {
-        console.log(`error`);
+        console.log(`error: ${error}`);
       });
   }, []);
 
@@ -21,11 +21,12 @@ function App() {
     <Box sx={{ flexGrow: 1 }}>
       <Grid
         container
-        spacing={{ xs: 2, sm: 4, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
+        spacing={{ xs: 2, sm: 4, md: 3, lg: 5 }}
+        columns={{ xs: 4, sm: 12, md: 12 , lg: 12}}
+        justifyContent="center"
       >
         {products?.map((product) => (
-          <Grid item xs={2} sm={4} md={4} key={product.name}>
+          <Grid item xs={2} sm={4} md={3} lg={2} key={product.name}>
             <Product
               name={product.name}
               category={product.category}
