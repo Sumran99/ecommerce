@@ -1,0 +1,32 @@
+import * as React from "react";
+import Product from "./Product";
+import { Box, Grid } from "@mui/material";
+
+function ProductList(props) {
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid
+        container
+        justifyContent="center"
+        spacing={{ xs: 2, sm: 4, md: 3, lg: 1 }}
+        columns={{ xs: 4, sm: 8, md: 12, lg: 20 }}
+      >
+        {props.filteredProducts?.map((product) => (
+          <Grid item xs={2} sm={4} md={4} lg={4} key={product.name}>
+            <Product
+              name={product.name}
+              category={product.category}
+              price={product.price}
+              desc={product.description}
+              stock={product.stock}
+              image_url={product.image_url}
+              setCartItems={props.setCartItems}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  );
+}
+
+export default ProductList;

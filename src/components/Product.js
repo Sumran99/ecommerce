@@ -55,7 +55,10 @@ function Product(props) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton
+          aria-label="add to cart"
+          onClick={(e) => props.setCartItems((prev) => prev + 1)}
+        >
           <AddShoppingCartIcon />
         </IconButton>
         <ExpandMore
