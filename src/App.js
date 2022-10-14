@@ -7,16 +7,10 @@ import Cart from "./components/Cart";
 import { Link } from "react-router-dom";
 
 function App() {
-
-  /**********************************************************/
-
   const [products, setProducts] = React.useState([]);
   const [filteredProducts, setFilteredProducts] = React.useState([]);
   const [searchInput, setSearchInput] = React.useState("");
   const [cartItems, setCartItems] = React.useState(0);
-
-  /**********************************************************/
-
 
   React.useEffect(() => {
     axios
@@ -26,7 +20,7 @@ function App() {
         setFilteredProducts(res.data.product);
       })
       .catch((error) => {
-        console.log(`error: ${error}`);
+        console.log("error", error);
       });
   }, []);
 
@@ -38,12 +32,10 @@ function App() {
     );
   }, [searchInput]);
 
-  /**********************************************************/
-
   return (
     <>
       <Link to="/cart">{Cart}</Link>
-      <Grid>
+      <Grid container>
         <Grid item>
           <Navbar setSearchInput={setSearchInput} cartItems={cartItems} />
         </Grid>

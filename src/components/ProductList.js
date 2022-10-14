@@ -7,12 +7,12 @@ function ProductList(props) {
     <Box sx={{ flexGrow: 1 }}>
       <Grid
         container
-        justifyContent="center"
-        spacing={{ xs: 2, sm: 4, md: 3, lg: 1 }}
-        columns={{ xs: 4, sm: 8, md: 12, lg: 20 }}
+        direction="row"
+        spacing={{ xs: 2, sm: 4, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
       >
         {props.filteredProducts?.map((product) => (
-          <Grid item xs={2} sm={4} md={4} lg={4} key={product.name}>
+          <Grid item xs={2} sm={4} md={4} key={product.name}>
             <Product
               name={product.name}
               category={product.category}

@@ -16,8 +16,6 @@ import {
   AddShoppingCart as AddShoppingCartIcon,
 } from "@mui/icons-material";
 
-/**********************************************************/
-
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -28,8 +26,6 @@ const ExpandMore = styled((props) => {
     duration: theme.transitions.duration.shortest,
   }),
 }));
-
-/**********************************************************/
 
 function Product(props) {
   const [expanded, setExpanded] = React.useState(false);

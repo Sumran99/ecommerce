@@ -19,8 +19,6 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
-/************************************************************/
-
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -61,19 +59,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-/**********************************************************************/
-
 function Navbar(props) {
   const navigate = useNavigate();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="absolute">
         <Toolbar>
           <Typography
             variant="h6"
             noWrap
-            component="div"
+            // component="div"
             sx={{ display: { xs: "block", sm: "block" } }}
           >
             E-Commerce
