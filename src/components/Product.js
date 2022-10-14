@@ -16,8 +16,6 @@ import {
   AddShoppingCart as AddShoppingCartIcon,
 } from "@mui/icons-material";
 
-/**********************************************************/
-
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -28,8 +26,6 @@ const ExpandMore = styled((props) => {
     duration: theme.transitions.duration.shortest,
   }),
 }));
-
-/**********************************************************/
 
 function Product(props) {
   const [expanded, setExpanded] = React.useState(false);
@@ -55,7 +51,10 @@ function Product(props) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton
+          aria-label="add to cart"
+          onClick={(e) => props.setCartItems((prev) => prev + 1)}
+        >
           <AddShoppingCartIcon />
         </IconButton>
         <ExpandMore
