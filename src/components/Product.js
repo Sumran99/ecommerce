@@ -33,14 +33,21 @@ function Product(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const handleCart = () => {
+    props.setCartItems((prev) => prev + 1);
+    props.setCartList(props.name)
+  }
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, margin: "0 auto", padding: "0.1rem"}} raised>
       <CardHeader title={props.name} subheader={props.category} />
       <CardMedia
         component="img"
-        height="320"
+        height="250"
         image={props.image_url}
         alt="Product"
+        sx={{padding: "1em 1em 0 1em", objectFit: "contain"}}
       />
       <CardContent>
         <Typography variant="body1" color="text.primary">
@@ -53,7 +60,7 @@ function Product(props) {
       <CardActions disableSpacing>
         <IconButton
           aria-label="add to cart"
-          onClick={(e) => props.setCartItems((prev) => prev + 1)}
+          onClick={handleCart}
         >
           <AddShoppingCartIcon />
         </IconButton>

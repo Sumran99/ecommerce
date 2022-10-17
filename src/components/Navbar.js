@@ -17,6 +17,8 @@ import {
   ShoppingCart as ShoppingCartIcon,
 } from "@mui/icons-material";
 
+import Cart from "./Cart";
+
 import { useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
@@ -63,6 +65,7 @@ function Navbar(props) {
   const navigate = useNavigate();
 
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="absolute">
         <Toolbar>
@@ -88,13 +91,14 @@ function Navbar(props) {
           <Box sx={{ display: { xs: "flex", md: "flex" } }}>
             <IconButton size="large" aria-label="show cart" color="inherit">
               <Badge badgeContent={props.cartItems} color="error">
-                <ShoppingCartIcon onClick={() => navigate("/cart")} />
+                <ShoppingCartIcon onClick={() => navigate("/cart", {state: {items: props.cartList}})} />
               </Badge>
             </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
     </Box>
+    </>
   );
 }
 

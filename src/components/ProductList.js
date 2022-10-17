@@ -21,6 +21,8 @@ function ProductList(props) {
               stock={product.stock}
               image_url={product.image_url}
               setCartItems={props.setCartItems}
+              setCartList = {props.setCartList}
+              cartList = {props.cartList}
             />
           </Grid>
         ))}
