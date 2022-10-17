@@ -1,8 +1,12 @@
 import * as React from "react";
 import Product from "./Product";
 import { Box, Grid } from "@mui/material";
+import {ProductContext} from "../contexts/ProductContext";
+
 
 function ProductList(props) {
+  const {items} = React.useContext(ProductContext);
+  const {list} = React.useContext(ProductContext);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -20,7 +24,9 @@ function ProductList(props) {
               desc={product.description}
               stock={product.stock}
               image_url={product.image_url}
-              setCartItems={props.setCartItems}
+            //   setCartItems={props.setCartItems}
+            //   setCartList={props.setCartList}
+            //   cartList={props.cartList}
             />
           </Grid>
         ))}

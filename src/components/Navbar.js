@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import { ProductContext } from "../contexts/ProductContext";
 import {
   styled,
   alpha,
@@ -61,41 +61,66 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 function Navbar(props) {
   const navigate = useNavigate();
-
-  return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="absolute">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            // component="div"
-            sx={{ display: { xs: "block", sm: "block" } }}
-          >
-            E-Commerce
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search by name"
-              inputProps={{ "aria-label": "search" }}
-              onChange={(e) => props.setSearchInput(e.target.value)}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "flex", md: "flex" } }}>
-            <IconButton size="large" aria-label="show cart" color="inherit">
-              <Badge badgeContent={props.cartItems} color="error">
-                <ShoppingCartIcon onClick={() => navigate("/cart")} />
-              </Badge>
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </Box>
-  );
+  const {items} = React.useContext(ProductContext);
+  const {list} = React.useContext(ProductContext);
+  console.log(items);
+  if (props.page === "home") {
+    return (
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="absolute">
+          <Toolbar>
+            <Typography
+              variant="h6"
+              noWrap
+              // component="div"
+              sx={{ display: { xs: "block", sm: "block" } }}
+            >
+              E-Commerce
+            </Typography>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search by name"
+                inputProps={{ "aria-label": "search" }}
+                onChange={(e) => props.setSearchInput(e.target.value)}
+              />
+            </Search>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: { xs: "flex", md: "flex" } }}>
+              <IconButton size="large" aria-label="show cart" color="inherit">
+                <Badge badgeContent={items.cartItems} color="error">
+                  <ShoppingCartIcon
+                    onClick={() =>
+                      navigate("/cart", { state: { items: list.cartList } })
+                    }
+                  />
+                </Badge>
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </AppBar>
+      </Box>
+    );
+  } else {
+    return (
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="absolute">
+          <Toolbar>
+            <Typography
+              variant="h6"
+              noWrap
+              // component="div"
+              sx={{ display: { xs: "block", sm: "block" } }}
+            >
+              Cart
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </Box>
+    );
+  }
 }
 
 export default Navbar;

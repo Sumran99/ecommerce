@@ -3,14 +3,15 @@ import { Grid } from "@mui/material";
 import ProductList from "./components/ProductList";
 import Navbar from "./components/Navbar";
 import axios from "axios";
-import Cart from "./components/Cart";
-import { Link } from "react-router-dom";
 
-function App() {
+import ProductContextProvider from "./contexts/ProductContext"
+
+function App({children}) {
   const [products, setProducts] = React.useState([]);
   const [filteredProducts, setFilteredProducts] = React.useState([]);
   const [searchInput, setSearchInput] = React.useState("");
-  const [cartItems, setCartItems] = React.useState(0);
+  // const [cartItems, setCartItems] = React.useState(0);
+  // const [cartList, setCartList] = React.useState([]);
 
   React.useEffect(() => {
     axios
@@ -33,20 +34,27 @@ function App() {
   }, [searchInput]);
 
   return (
-    <>
-      <Link to="/cart">{Cart}</Link>
+    <ProductContextProvider>
       <Grid container>
         <Grid item>
-          <Navbar setSearchInput={setSearchInput} cartItems={cartItems} />
+          <Navbar
+            page="home"
+            setSearchInput={setSearchInput}
+            // cartItems={cartItems}
+            // cartList={cartList}
+          />
         </Grid>
+
         <Grid item>
           <ProductList
             filteredProducts={filteredProducts}
-            setCartItems={setCartItems}
+            // setCartItems={setCartItems}
+            // setCartList={setCartList}
+            // cartList={cartList}
           />
         </Grid>
       </Grid>
-    </>
+    </ProductContextProvider>
   );
 }
 
